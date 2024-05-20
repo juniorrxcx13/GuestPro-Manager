@@ -1,0 +1,79 @@
+Reserva {
+    ID INT PRIMARY KEY,
+    Horario TIME,
+    Data DATETIME,
+    Avaliacao INT,
+    Valor DECIMAL(12,2),
+    NumeroQuarto INT FOREIGN KEY,
+    CPFHospede VARCHAR(11) 
+}
+
+Quarto {
+    Numero INT PRIMARY KEY,
+    Capacidade INT
+}
+
+Hóspede {
+    CPF VARCHAR(11) PRIMARY KEY,
+    Nome VARCHAR(64),
+    Email VARCHAR(128),
+    Telefone VARCHAR(15)
+    IDCliente INT FOREIGN KEY
+}
+
+Comentario {
+    ID INT PRIMARY KEY,
+    Nota INT,
+    Descricao VARCHAR(500)
+}
+
+Servico {
+    ID INT PRIMARY KEY,
+    Tipo VARCHAR(128)
+}
+
+Contem {
+    IDReserva INT PRIMARY KEY/FOREIGN KEY
+    IDServico INT PRIMARY KEY/FOREIGN KEY
+}
+
+Funcionario {
+    Registro INT PRIMARY KEY,
+    Nome VARCHAR(64),
+    Email VARCHAR(128),
+    Telefone VARCHAR(15)
+}
+
+Realiza {
+    IDServico INT PRIMARY KEY FOREIGN KEY,
+    IDRegistro INT PRIMARY KEY FOREIGN KEY
+}
+
+Departamento {
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(64),
+    Email VARCHAR(128),
+    Telefone VARCHAR(15),
+    DataAdmissao DATETIME
+}
+
+Camareira {
+    RegistroFuncionario INT PRIMARY KEY FOREIGN KEY,
+    QuartosAtribuidos VARCHAR(10) 
+}
+
+Cozinheiro {
+    RegistroFuncionario INT PRIMARY KEY FOREIGN KEY,
+    Especialidade VARCHAR(128) 
+}
+
+Recepcionista {
+    RegistroFuncionario INT PRIMARY KEY FOREIGN KEY,
+    Turno ENUM('Dia', 'Noite') 
+}
+
+Departamento {
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(64),
+    DataAdmissao DATETIME
+}
