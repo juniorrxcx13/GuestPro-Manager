@@ -61,12 +61,3 @@
 	Where H.CPF = R.CPFHospede and Q.numero = R.NumeroQuarto and R.avaliacao > (Select AVG(R2.avaliacao) from Reserva R2);
 
 # G4. Having, Group By
-
-
- 
-
- 
-
- 
-
- 
