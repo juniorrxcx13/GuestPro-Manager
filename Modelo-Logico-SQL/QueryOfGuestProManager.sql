@@ -44,3 +44,19 @@ FROM Reserva;
 
 select AVG(R.Avaliacao)
 from Reserva R;
+
+#Consulta que mostra o nome dos cozinheiros, sua especialidade e seu departamento
+SELECT 
+    F.Nome AS Nome_Cozinheiro,
+    D.Nome AS Departamento,
+    C.Especialidade
+FROM 
+    Funcionario F, Cozinheiro C, Departamento D
+WHERE 
+    F.Registro = C.RegistroFuncionario
+    AND F.ID_Departamento = D.ID;
+
+#Mostre o nome do hospede e o número do quarto cuja avaliação da reserva está acima da média
+Select H.nome, Q.numero
+From Hospede H, Quarto Q, Reserva R
+Where H.CPF = R.CPFHospede and Q.numero = R.NumeroQuarto and R.avaliacao > (Select AVG(R2.avaliacao) from Reserva R2);
