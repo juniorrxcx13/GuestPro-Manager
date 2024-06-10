@@ -61,3 +61,17 @@
 	Where H.CPF = R.CPFHospede and Q.numero = R.NumeroQuarto and R.avaliacao > (Select AVG(R2.avaliacao) from Reserva R2);
 
 # G4. Having, Group By
+
+
+	#Mostre o nome dos hóspedes que fizeram mais de uma reserva e sua quantidade de reservas
+	select CPFHospede, COUNT(*) AS 'total de reservas' 
+	from Reserva
+	Group by CPFHospede
+	Having COUNT(*) > 1;
+    
+  #Mostre o CPF, o nome e a média das notas dos comentários por hóspede
+	SELECT C.CPF_Hospede as 'CPF', H.nome, AVG(Nota) AS Media_Nota
+	FROM Comentario C, Hospede H
+  WHERE H.CPF = C.CPF_Hospede
+	GROUP BY CPF_Hospede
+	HAVING COUNT(*) >= 0;
